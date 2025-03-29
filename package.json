@@ -1,6 +1,6 @@
 {
   "name": "smart-screen-fit",
-  "version": "2.0.5",
+  "version": "2.0.10",
   "type": "module",
   "description": "根据scale自适应屏幕",
   "main": "dist/smart-screen-fit.cjs.js",
