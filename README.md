@@ -9,7 +9,7 @@
 使用以下命令安装 `smart-screen-fit`：
 
 ```vue
-pnpm add smart-screen-fit
+pnpm install smart-screen-fit
 或者使用 npm：
 
 bash
@@ -30,36 +30,28 @@ npm install smart-screen-fit
 ##### 使用示例
 
 ```vue
-导入 Hook
-import { useScaleWithRatio } from 'smart-screen-fit';
-使用示例
-vue
 <template>
-  <div ref="scalableElement" class="scalable">
+  <div ref="scalableElement">
     自适应内容
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useScaleWithRatio } from 'smart-screen-fit';
 
-export default {
-  setup() {
-    const scalableElement = ref(null);
+// 定义 DOM 元素引用
+const scalableElement = ref(null);
 
-    const { scaleRatio } = useScaleWithRatio(scalableElement, {
-      width: 1920, // 设计宽度
-      height: 1080, // 设计高度
-      debounce: true, // 是否启用防抖
-      debounceTime: 100, // 防抖时间
-      minScale: 0.5, // 最小缩放比例
-      maxScale: 2, // 最大缩放比例
-    });
-
-    return { scalableElement };
-  },
-};
+// 使用 Hook
+const { scaleRatio } = useScaleWithRatio(scalableElement, {
+  width: 1920, // 设计宽度
+  height: 1080, // 设计高度
+  debounce: true, // 是否启用防抖
+  debounceTime: 100, // 防抖时间（毫秒）
+  minScale: 0.5, // 最小缩放比例
+  maxScale: 2, // 最大缩放比例
+});
 </script>
 ```
 
@@ -81,45 +73,41 @@ export default {
 | ---------- | ---- | -------------------- |
 | scaleRatio | Ref  | 🔄 当前计算的缩放比例 |
 
-### 📐 useAutoScale
+### 📐 useShortEdgeScale
 
-**功能简介**：   `useAutoScale` 用于短边优先地动态缩放内容，确保容器内内容自适应大小，同时保持比例一致。
+**功能简介**：   `useShortEdgeScale` 用于短边优先地动态缩放内容，确保容器内内容自适应大小，同时保持比例一致。
 
 **使用场景**：   适合展示内容高度灵活的页面，例如：
 
 - 🖥️ 自适应的全屏大屏设计
 - 📱 移动端和小屏幕的自适应内容
 
-使用示例
+##### 使用示例
 
 ```vue
 <template>
-  <div ref="containerRef" class="container" :style="containerStyle">
+  <div ref="containerRef" :style="containerStyle">
     <!-- 内容区域 -->
     自适应布局内容
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
-import { useAutoScale } from 'smart-screen-fit';
+import { useShortEdgeScale } from 'smart-screen-fit';
 
-export default {
-  setup() {
-    const containerRef = ref(null);
+// 定义 DOM 元素引用
+const containerRef = ref(null);
 
-    const { containerStyle, scale } = useAutoScale(containerRef, {
-      width: 1920, // 设计宽度
-      height: 1080, // 设计高度
-      debounce: true, // 是否启用防抖
-      debounceTime: 100, // 防抖时间
-      minScale: 0.5, // 最小缩放比例
-      maxScale: 2, // 最大缩放比例
-    });
-
-    return { containerRef, containerStyle };
-  },
-};
+// 使用 Hook
+const { containerStyle, scale } = useShortEdgeScale(containerRef, {
+  width: 1920, // 设计宽度
+  height: 1080, // 设计高度
+  debounce: true, // 是否启用防抖
+  debounceTime: 100, // 防抖时间（毫秒）
+  minScale: 0.5, // 最小缩放比例
+  maxScale: 2, // 最大缩放比例
+});
 </script>
 ```
 
@@ -135,7 +123,7 @@ export default {
 | minScale     | Number  | undefined | 否 ⚙️     | ⚖️ 最小缩放比例            |
 | maxScale     | Number  | undefined | 否 ⚙️     | ⚖️ 最大缩放比例            |
 
-#### 返回值说明
+返回值说明
 
 | 返回值         | 类型   | 描述                 |
 | -------------- | ------ | -------------------- |
