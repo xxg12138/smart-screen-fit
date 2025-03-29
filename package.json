@@ -1,0 +1,29 @@
+{
+  "name": "smart-screen-fit",
+  "version": "2.0.5",
+  "type": "module",
+  "description": "根据scale自适应屏幕",
+  "main": "dist/smart-screen-fit.cjs.js",
+  "author": "lyk <1162149834@qq.com>",
+  "scripts": {
+  },
+  "keywords": [
+    "Vue",
+    "短边优先缩放",
+    "比例缩放",
+    "响应式布局",
+    "固定比例",
+    "防抖缩放",
+    "自适应",
+    "前端工具",
+    "窗口缩放",
+    "Vue插件"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rollup": "^4.37.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
